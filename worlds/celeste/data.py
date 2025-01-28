@@ -76,6 +76,7 @@ class CelesteSide(Enum):
     A_SIDE = 0
     B_SIDE = 1
     C_SIDE = 2
+    NOT_APPLICABLE = 19
 
 
 @dataclass
@@ -108,10 +109,12 @@ class CelesteItemType(Enum):
     COMPLETION = 2
     GEMHEART = 3
     STRAWBERRY = 4
-
+    TRAP = 5
 
 STRAWBERRY_UUID = (
-    _OFFSET_BASE + _OFFSET_TYPE * CelesteItemType.STRAWBERRY.value + _OFFSET_LEVEL * CelesteChapter.NOT_APPLICABLE.value
+    _OFFSET_BASE
+    + _OFFSET_TYPE * CelesteItemType.STRAWBERRY.value
+    + _OFFSET_LEVEL * CelesteChapter.NOT_APPLICABLE.value
 )
 
 VICTORY_UUID = (
@@ -121,6 +124,11 @@ VICTORY_UUID = (
     + _OFFSET_SIDE * CelesteSide.B_SIDE.value
 )
 
+TRAP_UUID = (
+    _OFFSET_BASE
+    + _OFFSET_TYPE * CelesteItemType.TRAP.value
+    + _OFFSET_LEVEL * CelesteChapter.NOT_APPLICABLE.value
+)
 
 class CelesteItem(Item):
     game: str = "Celeste"
@@ -188,6 +196,9 @@ class BaseData:
                 cls._item_name_to_id[row[_COLUMN_ITEM_NAME]] = uuid
 
         cls._item_name_to_id["Strawberry"] = STRAWBERRY_UUID
+        cls._item_name_to_id["Theo Crystal Trap"] = TRAP_UUID
+        cls._item_name_to_id["Badeline Chasers Trap"] = TRAP_UUID + 1
+        cls._item_name_to_id["Seeker Trap"] = TRAP_UUID + 2
 
         for row in cls._region_data:
             uuid = cls._region_hash(CelesteChapter(row[_COLUMN_LEVEL]), CelesteSide(row[_COLUMN_SIDE]))

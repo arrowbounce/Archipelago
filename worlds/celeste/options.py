@@ -73,6 +73,51 @@ class DisableHeartGates(Toggle):
 
     display_name = "Disable Heart Gates"
 
+class TrapChance(Range):
+    """The chance for any junk item in the pool to be replaced by a trap."""
+    display_name = "Trap Chance"
+    range_start = 0
+    range_end = 100
+    default = 1
+
+class TrapDeathDuration(Range):
+    """The amount of deaths that the trap will take to deactivate"""
+    display_name = "Trap Death Duration"
+    range_start = 0
+    range_end = 100
+    default = 10
+
+class TrapRoomDuration(Range):
+    """The amount of rooms passed that the trap will take to deactivate"""
+    display_name = "Trap Room Duration"
+    range_start = 0
+    range_end = 100
+    default = 3
+
+class TheoCrystalTrap(Range):
+    """The weight of Theo Crystal Traps in the trap pool.
+    This trap will spawn Badeline Chasers."""
+    display_name = "Badeline Clone Trap Weight"
+    range_start = 0
+    range_end = 100
+    default = 30
+
+class BadelineChaserTrap(Range):
+    """The weight of Badeline Chaser Traps in the trap pool.
+    This trap will spawn Badeline Chasers."""
+    display_name = "Badeline Clone Trap Weight"
+    range_start = 0
+    range_end = 100
+    default = 30
+
+class SeekerTrap(Range):
+    """The weight of Seeker Traps in the trap pool.
+    This trap will spawn seekers."""
+    display_name = "Seeker Trap Weight"
+    range_start = 0
+    range_end = 100
+    default = 30
+
 
 @dataclass
 class CelesteGameOptions(PerGameCommonOptions):
@@ -83,6 +128,13 @@ class CelesteGameOptions(PerGameCommonOptions):
     goal_level: GoalLevel
     progression_system: ProgressionSystem
     disable_heart_gates: DisableHeartGates
+
+    trap_chance: TrapChance
+    trap_death_duration: TrapDeathDuration
+    trap_room_duration: TrapRoomDuration
+    theo_crystal_trap: TheoCrystalTrap
+    badeline_chasers_trap: BadelineChaserTrap
+    seeker_trap: SeekerTrap
 
     _goal_level_map = {
         GoalLevel.option_chapter_7_summit_a: CelesteLevel(CelesteChapter.THE_SUMMIT, CelesteSide.A_SIDE),

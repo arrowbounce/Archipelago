@@ -102,4 +102,6 @@ class CelesteWorld(World):
             "goal_level",
             "progression_system",
             "disable_heart_gates",
+            "trap_death_duration",
+            "trap_room_duration",
         )
