@@ -71,23 +71,23 @@ class CelesteWorld(World):
         maxreqs = maxGoalReqs[self.options.goal_level]
         if self.options.berries_required > maxreqs["berries"]:
             raise OptionError(f"{self.player_name}: Required number of berries {self.options.berries_required} "
-                f"is too high for this victory condition. Please lower your berry count to {maxreqs["berries"]} or "
+                f"is too high for this victory condition. Please lower your berry count to {maxreqs['berries']} or "
                 f"less, or increase your victory condition requirement."
                 )
         if self.options.cassettes_required > maxreqs["cassettes"]:
             raise OptionError(f"{self.player_name}: Required number of cassettes {self.options.cassettes_required} "
-                f"is too high for this victory condition. Please lower your cassette count to {maxreqs["cassettes"]} "
+                f"is too high for this victory condition. Please lower your cassette count to {maxreqs['cassettes']} "
                 f"or less, or increase your victory condition requirement."
                 )
         if self.options.hearts_required > maxreqs["hearts"]:
             raise OptionError(f"{self.player_name}: Required number of hearts {self.options.hearts_required} "
-                f"is too high for this victory condition. Please lower your heart count to {maxreqs["hearts"]} or "
+                f"is too high for this victory condition. Please lower your heart count to {maxreqs['hearts']} or "
                 f"less, or increase your victory condition requirement."
                 )
         if self.options.levels_required > maxreqs["levels"]:
             raise OptionError(f"{self.player_name}: Required number of level completions "
                 f"{self.options.levels_required} is too high for this victory condition. Please lower your "
-                f"completion count to {maxreqs["levels"]} or less, or increase your victory condition requirement."
+                f"completion count to {maxreqs['levels']} or less, or increase your victory condition requirement."
                 )
         self.game_logic = GameLogic(self.player, self.multiworld, self.options)
 
