@@ -1,5 +1,6 @@
-import json
+import csv
 import pkgutil
+from io import StringIO
 from dataclasses import dataclass
 from enum import Enum
 from functools import total_ordering
@@ -8,13 +9,13 @@ from typing import Any, Dict, List, Optional, Tuple
 
 from BaseClasses import Item, ItemClassification, Location, Region
 
-_PATH_ITEM_DATA = str(Path("data", "items.json"))
-_PATH_REGION_DATA = str(Path("data", "regions.json"))
+_PATH_ITEM_DATA = str(Path("data", "items.csv"))
+_PATH_REGION_DATA = str(Path("data", "regions.csv"))
 
 _OFFSET_BASE = 8000000
-_OFFSET_TYPE = 20000
-_OFFSET_LEVEL = 1000
-_OFFSET_SIDE = 100
+_OFFSET_TYPE = 20000     # Maximum of 20 levels. 
+_OFFSET_LEVEL = 1000     # Maximum of 10 sides per level.
+_OFFSET_SIDE = 100       # Maximum of 100 items of one type per level-side
 
 _COLUMN_ITEM_TYPE = "type"
 _COLUMN_LEVEL = "level"
@@ -25,9 +26,18 @@ _COLUMN_LOCATION_NAME = "location_name"
 _COLUMN_REGION_NAME = "region_name"
 
 
-def _get_json_data(location: str) -> List[Dict[str, Any]]:
-    byte_data = pkgutil.get_data(__name__, location)
-    return json.loads(byte_data)
+_NUMERIC_COLUMNS = {_COLUMN_LEVEL, _COLUMN_SIDE, _COLUMN_OFFSET}
+
+def _cast_csv_row(row: Dict[str, str]) -> Dict[str, Any]:
+    for column in _NUMERIC_COLUMNS:
+        if column in row:
+            row[column] = int(row[column])
+    return row
+
+def _get_csv_data(location: str) -> List[Dict[str, Any]]:
+    csvdata = pkgutil.get_data(__name__, location).decode('utf-8')
+    with StringIO(csvdata) as csvfile:
+        return list(map(_cast_csv_row, csv.DictReader(csvfile)))
 
 
 @total_ordering
@@ -165,8 +175,8 @@ class CelesteLocation(Location):
 class BaseData:
     _generated = False
 
-    _item_data = _get_json_data(_PATH_ITEM_DATA)
-    _region_data = _get_json_data(_PATH_REGION_DATA)
+    _item_data = _get_csv_data(_PATH_ITEM_DATA)
+    _region_data = _get_csv_data(_PATH_REGION_DATA)
     _item_lookup: Dict[int, Dict[str, Any]] = {}
     _region_lookup: Dict[int, Dict[str, Any]] = {}
 
