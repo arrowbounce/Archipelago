@@ -5,9 +5,9 @@ from enum import Enum
 from typing import Dict, Union
 
 from BaseClasses import MultiWorld
-from Options import Choice, DeathLink, OptionGroup, PerGameCommonOptions, Range, Toggle
+from Options import Choice, DeathLink, OptionGroup, PerGameCommonOptions, Range, Toggle, LocationSet
 
-from .data import CelesteChapter, CelesteLevel, CelesteSide
+from .data import BaseData, CelesteChapter, CelesteLevel, CelesteSide, CelesteItemType
 
 
 class BerriesRequired(Range):
@@ -15,9 +15,30 @@ class BerriesRequired(Range):
 
     display_name = "Strawberry Requirement"
     range_start = 0
-    range_end = 175
+    range_end = 202
     default = 0
 
+class CountGoldens(Toggle):
+    """Whether golden strawberry items count towards the berry requirement.
+    If false, golden items in the pool will serve no purposes"""
+
+    display_name = "Count Goldens"
+    default = False
+
+class CountMoonBerry(Toggle):
+    """Whether the moon berry item counts towards the berry requirement.
+    If false, the moon berry in the pool will serve no purpose"""
+
+    display_name = "Count Moon Berry"
+    default = False
+
+class EnabledGoldens(LocationSet):
+    """Which goldens will be enabled and populated."""
+    valid_keys = [
+        name for location_type, _, name, _ in BaseData.locations()
+        if location_type == "golden"
+    ]
+    default = valid_keys
 
 class CassettesRequired(Range):
     """Number of Cassettes required to access the goal level."""
@@ -26,7 +47,6 @@ class CassettesRequired(Range):
     range_start = 0
     range_end = 8
     default = 0
-
 
 class HeartsRequired(Range):
     """Number of Crystal Hearts required to access the goal level."""
@@ -101,6 +121,9 @@ celeste_option_groups = [
 @dataclass
 class CelesteGameOptions(PerGameCommonOptions):
     berries_required: BerriesRequired
+    count_goldens: CountGoldens
+    count_moon_berry: CountMoonBerry
+    enabled_goldens: EnabledGoldens
     cassettes_required: CassettesRequired
     hearts_required: HeartsRequired
     levels_required: LevelsRequired
