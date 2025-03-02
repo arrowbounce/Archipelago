@@ -95,7 +95,7 @@ class OriginalLocationGenerator(LocationGenerator):
             return self._locations
 
         goal_level = self._options.get_goal_level()
-        for level, name, uuid in BaseData.locations():
+        for _, level, name, uuid in BaseData.locations():
             # Skip all locations that would come after the goal level
             if level > goal_level:
                 continue

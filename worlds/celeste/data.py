@@ -346,6 +346,7 @@ class BaseData:
 
         return [
             (
+                row[_COLUMN_ITEM_TYPE],
                 CelesteLevel(CelesteChapter(row[_COLUMN_LEVEL]), CelesteSide(row[_COLUMN_SIDE])),
                 row[_COLUMN_LOCATION_NAME],
                 uuid,
