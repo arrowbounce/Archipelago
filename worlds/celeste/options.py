@@ -5,7 +5,7 @@ from enum import Enum
 from typing import Dict, Union
 
 from BaseClasses import MultiWorld
-from Options import Choice, DeathLink, OptionGroup, PerGameCommonOptions, Range, Toggle, LocationSet
+from Options import Choice, DeathLink, OptionGroup, PerGameCommonOptions, Range, Toggle, LocationSet, ExcludeLocations
 
 from .data import BaseData, CelesteChapter, CelesteLevel, CelesteSide, CelesteItemType
 
@@ -17,28 +17,6 @@ class BerriesRequired(Range):
     range_start = 0
     range_end = 202
     default = 0
-
-class CountGoldens(Toggle):
-    """Whether golden strawberry items count towards the berry requirement.
-    If false, golden items in the pool will serve no purposes"""
-
-    display_name = "Count Goldens"
-    default = False
-
-class CountMoonBerry(Toggle):
-    """Whether the moon berry item counts towards the berry requirement.
-    If false, the moon berry in the pool will serve no purpose"""
-
-    display_name = "Count Moon Berry"
-    default = False
-
-class EnabledGoldens(LocationSet):
-    """Which goldens will be enabled and populated."""
-    valid_keys = [
-        name for location_type, _, name, _ in BaseData.locations()
-        if location_type == "golden"
-    ]
-    default = valid_keys
 
 class CassettesRequired(Range):
     """Number of Cassettes required to access the goal level."""
@@ -102,6 +80,13 @@ class DeathLinkAmnesty(Range):
     range_end = 50
     default = 20
 
+class CelesteExcludeLocations(ExcludeLocations):
+    """Prevent these locations from having an important item."""
+    default = [
+        name for location_type, _, name, _ in BaseData.locations()
+        if location_type == "golden"
+    ] 
+
 celeste_option_groups = [
     OptionGroup("Goal Options", [
         BerriesRequired,
@@ -121,9 +106,6 @@ celeste_option_groups = [
 @dataclass
 class CelesteGameOptions(PerGameCommonOptions):
     berries_required: BerriesRequired
-    count_goldens: CountGoldens
-    count_moon_berry: CountMoonBerry
-    enabled_goldens: EnabledGoldens
     cassettes_required: CassettesRequired
     hearts_required: HeartsRequired
     levels_required: LevelsRequired
@@ -132,6 +114,7 @@ class CelesteGameOptions(PerGameCommonOptions):
     disable_heart_gates: DisableHeartGates
     death_link: DeathLink
     death_link_amnesty: DeathLinkAmnesty
+    exclude_locations: CelesteExcludeLocations
 
     _goal_level_map = {
         GoalLevel.option_chapter_7_summit_a: CelesteLevel(CelesteChapter.THE_SUMMIT, CelesteSide.A_SIDE),

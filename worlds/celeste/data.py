@@ -120,17 +120,11 @@ class CelesteItemType(Enum):
     GEMHEART = 3
     STRAWBERRY = 4
     GOLDEN = 5
-    MOON_BERRY = 6
 
-# Generic (Golden) Strawberry UUIDs for received item
+# Generic Strawberry UUIDs for received item
 STRAWBERRY_UUID = (
     _OFFSET_BASE + 
     _OFFSET_TYPE * CelesteItemType.STRAWBERRY.value + 
-    _OFFSET_LEVEL * CelesteChapter.NOT_APPLICABLE.value
-)
-GOLDEN_STRAWBERRY_UUID = (
-    _OFFSET_BASE + 
-    _OFFSET_TYPE * CelesteItemType.GOLDEN.value + 
     _OFFSET_LEVEL * CelesteChapter.NOT_APPLICABLE.value
 )
 VICTORY_UUID = (
@@ -206,7 +200,6 @@ class BaseData:
                 cls._item_name_to_id[row[_COLUMN_ITEM_NAME]] = uuid
 
         cls._item_name_to_id["Strawberry"] = STRAWBERRY_UUID
-        cls._item_name_to_id["Golden Strawberry"] = GOLDEN_STRAWBERRY_UUID
 
         for row in cls._region_data:
             uuid = cls._region_hash(CelesteChapter(row[_COLUMN_LEVEL]), CelesteSide(row[_COLUMN_SIDE]))
@@ -241,8 +234,6 @@ class BaseData:
 
         if item_type == CelesteItemType.STRAWBERRY:
             return "Strawberry"
-        elif item_type == CelesteItemType.GOLDEN:
-            return "Golden Strawberry"
 
         return cls._lookup_value(cls.item_hash(item_type, level, side, offset), _COLUMN_ITEM_NAME)
 
@@ -285,14 +276,6 @@ class BaseData:
                 STRAWBERRY_UUID,
             )
  
-        if uuid == GOLDEN_STRAWBERRY_UUID:
-            return (
-                CelesteItemType.GOLDEN,
-                CelesteLevel(CelesteChapter.NOT_APPLICABLE, CelesteSide.A_SIDE),
-                "Golden Strawberry",
-                GOLDEN_STRAWBERRY_UUID,
-            )
-
         item_dict = cls._item_lookup[uuid]
 
         return (
@@ -316,22 +299,13 @@ class BaseData:
             item_list.append(cls.get_item(uuid))
 
         for row in cls._item_data:
-            if row[_COLUMN_ITEM_TYPE] == "strawberry":
+            if row[_COLUMN_ITEM_TYPE] in _BULK_TYPES:
                 item_list.append(
                     (
                         CelesteItemType.STRAWBERRY,
                         CelesteLevel(CelesteChapter(row[_COLUMN_LEVEL]), CelesteSide(row[_COLUMN_SIDE])),
                         "Strawberry",
                         STRAWBERRY_UUID,
-                    )
-                )
-            elif row[_COLUMN_ITEM_TYPE] == "golden":
-                item_list.append(
-                    (
-                        CelesteItemType.GOLDEN,
-                        CelesteLevel(CelesteChapter(row[_COLUMN_LEVEL]), CelesteSide(row[_COLUMN_SIDE])),
-                        "Golden Strawberry",
-                        GOLDEN_STRAWBERRY_UUID,
                     )
                 )
 
