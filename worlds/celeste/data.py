@@ -264,7 +264,7 @@ class BaseData:
         return cls._location_name_to_id
 
     @classmethod
-    def get_item(cls, uuid: int) -> Tuple[CelesteItemType, CelesteLevel, str, int]:
+    def get_item(cls, uuid: int) -> Tuple[CelesteItemType, CelesteLevel, str, str, int]:
         if not cls._generated:
             cls._generate_lookups()
 
@@ -273,6 +273,7 @@ class BaseData:
                 CelesteItemType.STRAWBERRY,
                 CelesteLevel(CelesteChapter.NOT_APPLICABLE, CelesteSide.A_SIDE),
                 "Strawberry",
+                "",
                 STRAWBERRY_UUID,
             )
  
@@ -282,13 +283,15 @@ class BaseData:
             CelesteItemType[item_dict[_COLUMN_ITEM_TYPE].upper()],
             CelesteLevel(CelesteChapter(item_dict[_COLUMN_LEVEL]), CelesteSide(item_dict[_COLUMN_SIDE])),
             item_dict[_COLUMN_ITEM_NAME],
+            item_dict[_COLUMN_LOCATION_NAME],
             uuid,
         )
 
+    # Get a list of items in the form (item type, level, item name, original location name, uuid)
     @classmethod
     def items(
         cls,
-    ) -> List[Tuple[CelesteItemType, CelesteLevel, str, int]]:
+    ) -> List[Tuple[CelesteItemType, CelesteLevel, str, str, int]]:
         if not cls._generated:
             cls._generate_lookups()
 
@@ -305,6 +308,7 @@ class BaseData:
                         CelesteItemType.STRAWBERRY,
                         CelesteLevel(CelesteChapter(row[_COLUMN_LEVEL]), CelesteSide(row[_COLUMN_SIDE])),
                         "Strawberry",
+                        row[_COLUMN_LOCATION_NAME],
                         STRAWBERRY_UUID,
                     )
                 )
@@ -314,13 +318,13 @@ class BaseData:
     @classmethod
     def locations(
         cls,
-    ) -> List[Tuple[CelesteLevel, str, int]]:
+    ) -> List[Tuple[CelesteItemType, CelesteLevel, str, int]]:
         if not cls._generated:
             cls._generate_lookups()
 
         return [
             (
-                row[_COLUMN_ITEM_TYPE],
+                CelesteItemType[row[_COLUMN_ITEM_TYPE].upper()],
                 CelesteLevel(CelesteChapter(row[_COLUMN_LEVEL]), CelesteSide(row[_COLUMN_SIDE])),
                 row[_COLUMN_LOCATION_NAME],
                 uuid,

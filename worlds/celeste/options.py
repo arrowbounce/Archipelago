@@ -84,7 +84,7 @@ class CelesteExcludeLocations(ExcludeLocations):
     """Prevent these locations from having an important item."""
     default = [
         name for location_type, _, name, _ in BaseData.locations()
-        if location_type == "golden"
+        if location_type == CelesteItemType.GOLDEN
     ] 
 
 celeste_option_groups = [

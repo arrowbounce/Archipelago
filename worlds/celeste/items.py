@@ -3,7 +3,7 @@ from typing import Dict, List
 
 from BaseClasses import ItemClassification
 
-from .data import VICTORY_UUID, BaseData, CelesteItem, CelesteItemType
+from .data import VICTORY_UUID, BaseData, CelesteItem, CelesteItemType, CelesteLevel
 from .options import CelesteGameOptions, ProgressionSystem
 
 ITEM_GROUPS = {
@@ -95,6 +95,24 @@ ITEM_GROUPS = {
     }
 }
 
+
+def get_requirement_limits(options: CelesteGameOptions, goal_level: CelesteLevel) -> dict[str, int]:
+        item_counts = {}
+        for item_type, level, _, location_name, _ in BaseData.items():
+            # Skip all items that aren't accessible before the goal level
+            if level >= goal_level or location_name in options.exclude_locations.value:
+                continue
+
+            if item_type == CelesteItemType.GOLDEN:
+                item_type = CelesteItemType.STRAWBERRY
+
+            if item_type not in item_counts:
+                item_counts[item_type] = 0
+            item_counts[item_type] += 1
+
+         
+        return item_counts
+
 class ItemGeneratorFactory:
     """Factory used for retrieving an `ItemGenerator` for dependency injection in building a `ProgressionSystem`."""
 
@@ -156,29 +174,20 @@ class OriginalItemGenerator(ItemGenerator):
 
         e.g., if the goal level is Summit A-Side, the maximum crystal heart requirement should be 18 rather than 24.
         """
-        item_counts = {}
-        goal_level = self._options.get_goal_level()
 
-        for item_type, level, _, _ in BaseData.items():
-            # Skip all items that aren't accessible before the goal level
-            if level >= goal_level:
-                continue
-
-            if item_type not in item_counts:
-                item_counts[item_type] = 0
-            item_counts[item_type] += 1
+        req_limits = get_requirement_limits(self._options, self._options.get_goal_level())
 
         self._options.berries_required.value = min(
-            self._options.berries_required.value, item_counts[CelesteItemType.STRAWBERRY]
+            self._options.berries_required.value, req_limits[CelesteItemType.STRAWBERRY]
         )
         self._options.cassettes_required.value = min(
-            self._options.cassettes_required.value, item_counts[CelesteItemType.CASSETTE]
+            self._options.cassettes_required.value, req_limits[CelesteItemType.CASSETTE]
         )
         self._options.hearts_required.value = min(
-            self._options.hearts_required.value, item_counts[CelesteItemType.GEMHEART]
+            self._options.hearts_required.value, req_limits[CelesteItemType.GEMHEART]
         )
         self._options.levels_required.value = min(
-            self._options.levels_required.value, item_counts[CelesteItemType.COMPLETION]
+            self._options.levels_required.value, req_limits[CelesteItemType.COMPLETION]
         )
 
     def generate_items(self) -> List[CelesteItem]:
@@ -189,7 +198,7 @@ class OriginalItemGenerator(ItemGenerator):
 
         strawberry_count = 0
         goal_level = self._options.get_goal_level()
-        for item_type, level, name, uuid in BaseData.items():
+        for item_type, level, name, location_name, uuid in BaseData.items():
             # Skip all items that would ordinarily come after the goal level
             if level > goal_level:
                 continue
@@ -198,10 +207,11 @@ class OriginalItemGenerator(ItemGenerator):
             classification = ItemClassification.progression
 
             # All strawberries above the required number are filler, rather than progression.
-            if item_type == CelesteItemType.STRAWBERRY:
+            if item_type == CelesteItemType.STRAWBERRY or item_type == CelesteItemType.GOLDEN:
                 if strawberry_count >= self._options.berries_required.value:
                     classification = ItemClassification.filler
                 strawberry_count += 1
+
             # All non-strawberry items normally found in the goal level are filler, rather than progression.
             elif level == goal_level and item_type != CelesteItemType.COMPLETION:
                 classification = ItemClassification.filler

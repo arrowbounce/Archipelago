@@ -4,7 +4,7 @@ from typing import Dict, List
 from BaseClasses import MultiWorld, Region
 
 from .access_rules import LocationAccessor, RegionAccessor
-from .data import BaseData, CelesteLocation
+from .data import BaseData, CelesteLocation, CelesteItemType
 from .options import CelesteGameOptions, ProgressionSystem
 
 
@@ -95,10 +95,11 @@ class OriginalLocationGenerator(LocationGenerator):
             return self._locations
 
         goal_level = self._options.get_goal_level()
-        for _, level, name, uuid in BaseData.locations():
+        for location_type, level, name, uuid in BaseData.locations():
             # Skip all locations that would come after the goal level
             if level > goal_level:
                 continue
+            
             location = CelesteLocation(self._player, level, name, uuid)
             location.access_rule = self._location_accessor.generate(location)
             self._locations[uuid] = location
