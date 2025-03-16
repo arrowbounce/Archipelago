@@ -5,9 +5,9 @@ from enum import Enum
 from typing import Dict, Union
 
 from BaseClasses import MultiWorld
-from Options import Choice, DeathLink, OptionGroup, PerGameCommonOptions, Range, Toggle
+from Options import Choice, DeathLink, OptionGroup, PerGameCommonOptions, Range, Toggle, LocationSet, ExcludeLocations
 
-from .data import CelesteChapter, CelesteLevel, CelesteSide
+from .data import BaseData, CelesteChapter, CelesteLevel, CelesteSide, CelesteItemType
 
 
 class BerriesRequired(Range):
@@ -15,9 +15,8 @@ class BerriesRequired(Range):
 
     display_name = "Strawberry Requirement"
     range_start = 0
-    range_end = 175
+    range_end = 202
     default = 0
-
 
 class CassettesRequired(Range):
     """Number of Cassettes required to access the goal level."""
@@ -26,7 +25,6 @@ class CassettesRequired(Range):
     range_start = 0
     range_end = 8
     default = 0
-
 
 class HeartsRequired(Range):
     """Number of Crystal Hearts required to access the goal level."""
@@ -57,6 +55,7 @@ class GoalLevel(Choice):
     option_chapter_8_core_b = 4
     option_chapter_7_summit_c = 5
     option_chapter_8_core_c = 6
+    option_all_berries = 99
     default = 0
 
 
@@ -81,6 +80,13 @@ class DeathLinkAmnesty(Range):
     range_start = 1
     range_end = 50
     default = 20
+
+class CelesteExcludeLocations(ExcludeLocations):
+    """Prevent these locations from having an important item."""
+    default = [
+        name for location_type, _, name, _ in BaseData.locations()
+        if location_type == CelesteItemType.GOLDEN
+    ] 
 
 celeste_option_groups = [
     OptionGroup("Goal Options", [
@@ -109,6 +115,7 @@ class CelesteGameOptions(PerGameCommonOptions):
     disable_heart_gates: DisableHeartGates
     death_link: DeathLink
     death_link_amnesty: DeathLinkAmnesty
+    exclude_locations: CelesteExcludeLocations
 
     _goal_level_map = {
         GoalLevel.option_chapter_7_summit_a: CelesteLevel(CelesteChapter.THE_SUMMIT, CelesteSide.A_SIDE),
@@ -118,6 +125,7 @@ class CelesteGameOptions(PerGameCommonOptions):
         GoalLevel.option_chapter_8_core_b: CelesteLevel(CelesteChapter.CORE, CelesteSide.B_SIDE),
         GoalLevel.option_chapter_8_core_c: CelesteLevel(CelesteChapter.CORE, CelesteSide.C_SIDE),
         GoalLevel.option_chapter_9_farewell_a: CelesteLevel(CelesteChapter.FAREWELL, CelesteSide.A_SIDE),
+        GoalLevel.option_all_berries: CelesteLevel(CelesteChapter.FAREWELL, CelesteSide.A_SIDE),
     }
 
     def get_goal_level(self) -> CelesteLevel:

@@ -5,7 +5,7 @@ from typing import List
 
 from BaseClasses import Item, ItemClassification, MultiWorld, Tutorial
 from worlds.AutoWorld import WebWorld, World
-from .options import CelesteGameOptions, celeste_option_groups
+from .options import CelesteGameOptions, celeste_option_groups, GoalLevel
 
 from .data import (
     BaseData,
@@ -17,7 +17,7 @@ from .data import (
 )
 from Options import OptionError
 from .progression import GameLogic
-from .items import ITEM_GROUPS
+from .items import ITEM_GROUPS, get_requirement_limits
 
 class CelesteWebWorld(WebWorld):
     theme = "ice"
@@ -60,34 +60,27 @@ class CelesteWorld(World):
         self.game_logic = None
 
     def generate_early(self) -> None:
-        maxGoalReqs = [
-        {"berries":123, "cassettes":6, "hearts":18, "levels":18}, 
-        {"berries":170, "cassettes":7, "hearts":21, "levels":22}, 
-        {"berries":175, "cassettes":8, "hearts":24, "levels":25}, 
-        {"berries":170, "cassettes":7, "hearts":19, "levels":19}, 
-        {"berries":170, "cassettes":8, "hearts":22, "levels":23}, 
-        {"berries":175, "cassettes":7, "hearts":20, "levels":20}, 
-        {"berries":175, "cassettes":8, "hearts":23, "levels":24}]
-        maxreqs = maxGoalReqs[self.options.goal_level]
-        if self.options.berries_required > maxreqs["berries"]:
+        maxreqs = get_requirement_limits(self.options, self.options.get_goal_level())
+
+        if self.options.berries_required > maxreqs[CelesteItemType.STRAWBERRY]:
             raise OptionError(f"{self.player_name}: Required number of berries {self.options.berries_required} "
-                f"is too high for this victory condition. Please lower your berry count to {maxreqs["berries"]} or "
+                f"is too high for this victory condition. Please lower your berry count to {maxreqs['berries']} or "
                 f"less, or increase your victory condition requirement."
                 )
-        if self.options.cassettes_required > maxreqs["cassettes"]:
+        if self.options.cassettes_required > maxreqs[CelesteItemType.CASSETTE]:
             raise OptionError(f"{self.player_name}: Required number of cassettes {self.options.cassettes_required} "
-                f"is too high for this victory condition. Please lower your cassette count to {maxreqs["cassettes"]} "
+                f"is too high for this victory condition. Please lower your cassette count to {maxreqs['cassettes']} "
                 f"or less, or increase your victory condition requirement."
                 )
-        if self.options.hearts_required > maxreqs["hearts"]:
+        if self.options.hearts_required > maxreqs[CelesteItemType.GEMHEART]:
             raise OptionError(f"{self.player_name}: Required number of hearts {self.options.hearts_required} "
-                f"is too high for this victory condition. Please lower your heart count to {maxreqs["hearts"]} or "
+                f"is too high for this victory condition. Please lower your heart count to {maxreqs['hearts']} or "
                 f"less, or increase your victory condition requirement."
                 )
-        if self.options.levels_required > maxreqs["levels"]:
+        if self.options.levels_required > maxreqs[CelesteItemType.COMPLETION]:
             raise OptionError(f"{self.player_name}: Required number of level completions "
                 f"{self.options.levels_required} is too high for this victory condition. Please lower your "
-                f"completion count to {maxreqs["levels"]} or less, or increase your victory condition requirement."
+                f"completion count to {maxreqs['levels']} or less, or increase your victory condition requirement."
                 )
         self.game_logic = GameLogic(self.player, self.multiworld, self.options)
 
@@ -119,12 +112,18 @@ class CelesteWorld(World):
         }
 
     def generate_basic(self) -> None:
-        self.multiworld.get_location(self.game_logic.get_victory_location().name, self.player).place_locked_item(
-            self.create_item("Victory (Celeste)")
-        )
-        self.multiworld.completion_condition[self.player] = partial(
-            lambda player, state: state.has("Victory (Celeste)", player), self.player
-        )
+        if self.options.goal_level.value == GoalLevel.option_all_berries:
+            self.multiworld.completion_condition[self.player] = partial(
+                lambda player, state: state.has("Strawberry", player, count=202), self.player
+            )
+
+        else: 
+            self.multiworld.get_location(self.game_logic.get_victory_location().name, self.player).place_locked_item(
+                self.create_item("Victory (Celeste)")
+            )
+            self.multiworld.completion_condition[self.player] = partial(
+                lambda player, state: state.has("Victory (Celeste)", player), self.player
+            )
 
     def fill_slot_data(self):
         return self.options.as_dict(

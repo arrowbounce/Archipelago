@@ -1,5 +1,6 @@
-import json
+import csv
 import pkgutil
+from io import StringIO
 from dataclasses import dataclass
 from enum import Enum
 from functools import total_ordering
@@ -8,13 +9,13 @@ from typing import Any, Dict, List, Optional, Tuple
 
 from BaseClasses import Item, ItemClassification, Location, Region
 
-_PATH_ITEM_DATA = str(Path("data", "items.json"))
-_PATH_REGION_DATA = str(Path("data", "regions.json"))
+_PATH_ITEM_DATA = str(Path("data", "items.csv"))
+_PATH_REGION_DATA = str(Path("data", "regions.csv"))
 
-_OFFSET_BASE = 8000000
-_OFFSET_TYPE = 20000
-_OFFSET_LEVEL = 1000
-_OFFSET_SIDE = 100
+_OFFSET_BASE = 8000000   
+_OFFSET_TYPE = 20000     # Maximum of 20 levels per type. 
+_OFFSET_LEVEL = 1000     # Maximum of 10 sides per level.
+_OFFSET_SIDE = 100       # Maximum of 100 items of one type per level-side
 
 _COLUMN_ITEM_TYPE = "type"
 _COLUMN_LEVEL = "level"
@@ -24,10 +25,20 @@ _COLUMN_ITEM_NAME = "item_name"
 _COLUMN_LOCATION_NAME = "location_name"
 _COLUMN_REGION_NAME = "region_name"
 
+_BULK_TYPES = {"strawberry", "golden"}
 
-def _get_json_data(location: str) -> List[Dict[str, Any]]:
-    byte_data = pkgutil.get_data(__name__, location)
-    return json.loads(byte_data)
+_NUMERIC_COLUMNS = {_COLUMN_LEVEL, _COLUMN_SIDE, _COLUMN_OFFSET}
+
+def _cast_csv_row(row: Dict[str, str]) -> Dict[str, Any]:
+    for column in _NUMERIC_COLUMNS:
+        if column in row:
+            row[column] = int(row[column])
+    return row
+
+def _get_csv_data(location: str) -> List[Dict[str, Any]]:
+    csvdata = pkgutil.get_data(__name__, location).decode('utf-8')
+    with StringIO(csvdata) as csvfile:
+        return list(map(_cast_csv_row, csv.DictReader(csvfile)))
 
 
 @total_ordering
@@ -108,19 +119,20 @@ class CelesteItemType(Enum):
     COMPLETION = 2
     GEMHEART = 3
     STRAWBERRY = 4
+    GOLDEN = 5
 
-
+# Generic Strawberry UUIDs for received item
 STRAWBERRY_UUID = (
-    _OFFSET_BASE + _OFFSET_TYPE * CelesteItemType.STRAWBERRY.value + _OFFSET_LEVEL * CelesteChapter.NOT_APPLICABLE.value
+    _OFFSET_BASE + 
+    _OFFSET_TYPE * CelesteItemType.STRAWBERRY.value + 
+    _OFFSET_LEVEL * CelesteChapter.NOT_APPLICABLE.value
 )
-
 VICTORY_UUID = (
-    _OFFSET_BASE
-    + _OFFSET_TYPE * CelesteItemType.VICTORY.value
-    + _OFFSET_LEVEL * CelesteChapter.FAREWELL.value
-    + _OFFSET_SIDE * CelesteSide.B_SIDE.value
+    _OFFSET_BASE +
+    _OFFSET_TYPE * CelesteItemType.VICTORY.value +
+    _OFFSET_LEVEL * CelesteChapter.FAREWELL.value +
+    _OFFSET_SIDE * CelesteSide.B_SIDE.value
 )
-
 
 class CelesteItem(Item):
     game: str = "Celeste"
@@ -165,8 +177,8 @@ class CelesteLocation(Location):
 class BaseData:
     _generated = False
 
-    _item_data = _get_json_data(_PATH_ITEM_DATA)
-    _region_data = _get_json_data(_PATH_REGION_DATA)
+    _item_data = _get_csv_data(_PATH_ITEM_DATA)
+    _region_data = _get_csv_data(_PATH_REGION_DATA)
     _item_lookup: Dict[int, Dict[str, Any]] = {}
     _region_lookup: Dict[int, Dict[str, Any]] = {}
 
@@ -184,7 +196,7 @@ class BaseData:
             )
             cls._location_name_to_id[row[_COLUMN_LOCATION_NAME]] = uuid
             cls._item_lookup[uuid] = row
-            if row[_COLUMN_ITEM_TYPE] != "strawberry":
+            if row[_COLUMN_ITEM_TYPE] not in _BULK_TYPES:
                 cls._item_name_to_id[row[_COLUMN_ITEM_NAME]] = uuid
 
         cls._item_name_to_id["Strawberry"] = STRAWBERRY_UUID
@@ -219,8 +231,10 @@ class BaseData:
     def item_name(cls, item_type: CelesteItemType, level: CelesteChapter, side: CelesteSide, offset: int = 0) -> str:
         if not cls._generated:
             cls._generate_lookups()
+
         if item_type == CelesteItemType.STRAWBERRY:
             return "Strawberry"
+
         return cls._lookup_value(cls.item_hash(item_type, level, side, offset), _COLUMN_ITEM_NAME)
 
     @classmethod
@@ -250,7 +264,7 @@ class BaseData:
         return cls._location_name_to_id
 
     @classmethod
-    def get_item(cls, uuid: int) -> Tuple[CelesteItemType, CelesteLevel, str, int]:
+    def get_item(cls, uuid: int) -> Tuple[CelesteItemType, CelesteLevel, str, str, int]:
         if not cls._generated:
             cls._generate_lookups()
 
@@ -259,54 +273,58 @@ class BaseData:
                 CelesteItemType.STRAWBERRY,
                 CelesteLevel(CelesteChapter.NOT_APPLICABLE, CelesteSide.A_SIDE),
                 "Strawberry",
+                "",
                 STRAWBERRY_UUID,
             )
-
+ 
         item_dict = cls._item_lookup[uuid]
 
         return (
             CelesteItemType[item_dict[_COLUMN_ITEM_TYPE].upper()],
             CelesteLevel(CelesteChapter(item_dict[_COLUMN_LEVEL]), CelesteSide(item_dict[_COLUMN_SIDE])),
             item_dict[_COLUMN_ITEM_NAME],
+            item_dict[_COLUMN_LOCATION_NAME],
             uuid,
         )
 
+    # Get a list of items in the form (item type, level, item name, original location name, uuid)
     @classmethod
     def items(
         cls,
-    ) -> List[Tuple[CelesteItemType, CelesteLevel, str, int]]:
+    ) -> List[Tuple[CelesteItemType, CelesteLevel, str, str, int]]:
         if not cls._generated:
             cls._generate_lookups()
 
         item_list = []
         for uuid, row in sorted(cls._item_lookup.items()):
-            if row[_COLUMN_ITEM_TYPE] == "strawberry":
+            if row[_COLUMN_ITEM_TYPE] in _BULK_TYPES:
                 continue
             item_list.append(cls.get_item(uuid))
 
         for row in cls._item_data:
-            if row[_COLUMN_ITEM_TYPE] != "strawberry":
-                continue
-            item_list.append(
-                (
-                    CelesteItemType.STRAWBERRY,
-                    CelesteLevel(CelesteChapter(row[_COLUMN_LEVEL]), CelesteSide(row[_COLUMN_SIDE])),
-                    "Strawberry",
-                    STRAWBERRY_UUID,
+            if row[_COLUMN_ITEM_TYPE] in _BULK_TYPES:
+                item_list.append(
+                    (
+                        CelesteItemType.STRAWBERRY,
+                        CelesteLevel(CelesteChapter(row[_COLUMN_LEVEL]), CelesteSide(row[_COLUMN_SIDE])),
+                        "Strawberry",
+                        row[_COLUMN_LOCATION_NAME],
+                        STRAWBERRY_UUID,
+                    )
                 )
-            )
 
         return item_list
 
     @classmethod
     def locations(
         cls,
-    ) -> List[Tuple[CelesteLevel, str, int]]:
+    ) -> List[Tuple[CelesteItemType, CelesteLevel, str, int]]:
         if not cls._generated:
             cls._generate_lookups()
 
         return [
             (
+                CelesteItemType[row[_COLUMN_ITEM_TYPE].upper()],
                 CelesteLevel(CelesteChapter(row[_COLUMN_LEVEL]), CelesteSide(row[_COLUMN_SIDE])),
                 row[_COLUMN_LOCATION_NAME],
                 uuid,

@@ -1,0 +1,262 @@
+type,level,side,offset,location_name,item_name
+victory,10,1,0,Victory (Celeste),Victory (Celeste)
+cassette,1,0,0,Cassette (Chapter 1: Forsaken City A-Side),Cassette (Chapter 1: Forsaken City A-Side)
+cassette,2,0,0,Cassette (Chapter 2: Old Site A-Side),Cassette (Chapter 2: Old Site A-Side)
+cassette,3,0,0,Cassette (Chapter 3: Celestial Resort A-Side),Cassette (Chapter 3: Celestial Resort A-Side)
+cassette,4,0,0,Cassette (Chapter 4: Golden Ridge A-Side),Cassette (Chapter 4: Golden Ridge A-Side)
+cassette,5,0,0,Cassette (Chapter 5: Mirror Temple A-Side),Cassette (Chapter 5: Mirror Temple A-Side)
+cassette,6,0,0,Cassette (Chapter 6: Reflection A-Side),Cassette (Chapter 6: Reflection A-Side)
+cassette,7,0,0,Cassette (Chapter 7: The Summit A-Side),Cassette (Chapter 7: The Summit A-Side)
+cassette,9,0,0,Cassette (Chapter 8: Core A-Side),Cassette (Chapter 8: Core A-Side)
+completion,1,0,0,Completion (Chapter 1: Forsaken City A-Side),Completion (Chapter 1: Forsaken City A-Side)
+completion,2,0,0,Completion (Chapter 2: Old Site A-Side),Completion (Chapter 2: Old Site A-Side)
+completion,3,0,0,Completion (Chapter 3: Celestial Resort A-Side),Completion (Chapter 3: Celestial Resort A-Side)
+completion,4,0,0,Completion (Chapter 4: Golden Ridge A-Side),Completion (Chapter 4: Golden Ridge A-Side)
+completion,5,0,0,Completion (Chapter 5: Mirror Temple A-Side),Completion (Chapter 5: Mirror Temple A-Side)
+completion,6,0,0,Completion (Chapter 6: Reflection A-Side),Completion (Chapter 6: Reflection A-Side)
+completion,7,0,0,Completion (Chapter 7: The Summit A-Side),Completion (Chapter 7: The Summit A-Side)
+completion,8,0,0,Completion (Epilogue),Completion (Epilogue)
+completion,9,0,0,Completion (Chapter 8: Core A-Side),Completion (Chapter 8: Core A-Side)
+completion,10,0,0,Completion (Chapter 9: Farewell A-Side),Completion (Chapter 9: Farewell A-Side)
+completion,1,1,0,Completion (Chapter 1: Forsaken City B-Side),Completion (Chapter 1: Forsaken City B-Side)
+completion,2,1,0,Completion (Chapter 2: Old Site B-Side),Completion (Chapter 2: Old Site B-Side)
+completion,3,1,0,Completion (Chapter 3: Celestial Resort B-Side),Completion (Chapter 3: Celestial Resort B-Side)
+completion,4,1,0,Completion (Chapter 4: Golden Ridge B-Side),Completion (Chapter 4: Golden Ridge B-Side)
+completion,5,1,0,Completion (Chapter 5: Mirror Temple B-Side),Completion (Chapter 5: Mirror Temple B-Side)
+completion,6,1,0,Completion (Chapter 6: Reflection B-Side),Completion (Chapter 6: Reflection B-Side)
+completion,7,1,0,Completion (Chapter 7: The Summit B-Side),Completion (Chapter 7: The Summit B-Side)
+completion,9,1,0,Completion (Chapter 8: Core B-Side),Completion (Chapter 8: Core B-Side)
+completion,1,2,0,Completion (Chapter 1: Forsaken City C-Side),Completion (Chapter 1: Forsaken City C-Side)
+completion,2,2,0,Completion (Chapter 2: Old Site C-Side),Completion (Chapter 2: Old Site C-Side)
+completion,3,2,0,Completion (Chapter 3: Celestial Resort C-Side),Completion (Chapter 3: Celestial Resort C-Side)
+completion,4,2,0,Completion (Chapter 4: Golden Ridge C-Side),Completion (Chapter 4: Golden Ridge C-Side)
+completion,5,2,0,Completion (Chapter 5: Mirror Temple C-Side),Completion (Chapter 5: Mirror Temple C-Side)
+completion,6,2,0,Completion (Chapter 6: Reflection C-Side),Completion (Chapter 6: Reflection C-Side)
+completion,7,2,0,Completion (Chapter 7: The Summit C-Side),Completion (Chapter 7: The Summit C-Side)
+completion,9,2,0,Completion (Chapter 8: Core C-Side),Completion (Chapter 8: Core C-Side)
+gemheart,1,0,0,Crystal Heart (Chapter 1: Forsaken City A-Side),Crystal Heart (Chapter 1: Forsaken City A-Side)
+gemheart,2,0,0,Crystal Heart (Chapter 2: Old Site A-Side),Crystal Heart (Chapter 2: Old Site A-Side)
+gemheart,3,0,0,Crystal Heart (Chapter 3: Celestial Resort A-Side),Crystal Heart (Chapter 3: Celestial Resort A-Side)
+gemheart,4,0,0,Crystal Heart (Chapter 4: Golden Ridge A-Side),Crystal Heart (Chapter 4: Golden Ridge A-Side)
+gemheart,5,0,0,Crystal Heart (Chapter 5: Mirror Temple A-Side),Crystal Heart (Chapter 5: Mirror Temple A-Side)
+gemheart,6,0,0,Crystal Heart (Chapter 6: Reflection A-Side),Crystal Heart (Chapter 6: Reflection A-Side)
+gemheart,7,0,0,Crystal Heart (Chapter 7: The Summit A-Side),Crystal Heart (Chapter 7: The Summit A-Side)
+gemheart,9,0,0,Crystal Heart (Chapter 8: Core A-Side),Crystal Heart (Chapter 8: Core A-Side)
+gemheart,1,1,0,Crystal Heart (Chapter 1: Forsaken City B-Side),Crystal Heart (Chapter 1: Forsaken City B-Side)
+gemheart,2,1,0,Crystal Heart (Chapter 2: Old Site B-Side),Crystal Heart (Chapter 2: Old Site B-Side)
+gemheart,3,1,0,Crystal Heart (Chapter 3: Celestial Resort B-Side),Crystal Heart (Chapter 3: Celestial Resort B-Side)
+gemheart,4,1,0,Crystal Heart (Chapter 4: Golden Ridge B-Side),Crystal Heart (Chapter 4: Golden Ridge B-Side)
+gemheart,5,1,0,Crystal Heart (Chapter 5: Mirror Temple B-Side),Crystal Heart (Chapter 5: Mirror Temple B-Side)
+gemheart,6,1,0,Crystal Heart (Chapter 6: Reflection B-Side),Crystal Heart (Chapter 6: Reflection B-Side)
+gemheart,7,1,0,Crystal Heart (Chapter 7: The Summit B-Side),Crystal Heart (Chapter 7: The Summit B-Side)
+gemheart,9,1,0,Crystal Heart (Chapter 8: Core B-Side),Crystal Heart (Chapter 8: Core B-Side)
+gemheart,1,2,0,Crystal Heart (Chapter 1: Forsaken City C-Side),Crystal Heart (Chapter 1: Forsaken City C-Side)
+gemheart,2,2,0,Crystal Heart (Chapter 2: Old Site C-Side),Crystal Heart (Chapter 2: Old Site C-Side)
+gemheart,3,2,0,Crystal Heart (Chapter 3: Celestial Resort C-Side),Crystal Heart (Chapter 3: Celestial Resort C-Side)
+gemheart,4,2,0,Crystal Heart (Chapter 4: Golden Ridge C-Side),Crystal Heart (Chapter 4: Golden Ridge C-Side)
+gemheart,5,2,0,Crystal Heart (Chapter 5: Mirror Temple C-Side),Crystal Heart (Chapter 5: Mirror Temple C-Side)
+gemheart,6,2,0,Crystal Heart (Chapter 6: Reflection C-Side),Crystal Heart (Chapter 6: Reflection C-Side)
+gemheart,7,2,0,Crystal Heart (Chapter 7: The Summit C-Side),Crystal Heart (Chapter 7: The Summit C-Side)
+gemheart,9,2,0,Crystal Heart (Chapter 8: Core C-Side),Crystal Heart (Chapter 8: Core C-Side)
+strawberry,1,0,0,Strawberry 1 (Chapter 1: Forsaken City A-Side),Strawberry
+strawberry,1,0,1,Strawberry 2 (Chapter 1: Forsaken City A-Side),Strawberry
+strawberry,1,0,2,Strawberry 3 (Chapter 1: Forsaken City A-Side),Strawberry
+strawberry,1,0,3,Strawberry 4 (Chapter 1: Forsaken City A-Side),Strawberry
+strawberry,1,0,4,Strawberry 5 (Chapter 1: Forsaken City A-Side),Strawberry
+strawberry,1,0,5,Strawberry 6 (Chapter 1: Forsaken City A-Side),Strawberry
+strawberry,1,0,6,Strawberry 7 (Chapter 1: Forsaken City A-Side),Strawberry
+strawberry,1,0,7,Strawberry 8 (Chapter 1: Forsaken City A-Side),Strawberry
+strawberry,1,0,8,Strawberry 9 (Chapter 1: Forsaken City A-Side),Strawberry
+strawberry,1,0,9,Strawberry 10 (Chapter 1: Forsaken City A-Side),Strawberry
+strawberry,1,0,10,Strawberry 11 (Chapter 1: Forsaken City A-Side),Strawberry
+strawberry,1,0,11,Strawberry 12 (Chapter 1: Forsaken City A-Side),Strawberry
+strawberry,1,0,12,Strawberry 13 (Chapter 1: Forsaken City A-Side),Strawberry
+strawberry,1,0,13,Strawberry 14 (Chapter 1: Forsaken City A-Side),Strawberry
+strawberry,1,0,14,Strawberry 15 (Chapter 1: Forsaken City A-Side),Strawberry
+strawberry,1,0,15,Strawberry 16 (Chapter 1: Forsaken City A-Side),Strawberry
+strawberry,1,0,16,Strawberry 17 (Chapter 1: Forsaken City A-Side),Strawberry
+strawberry,1,0,17,Strawberry 18 (Chapter 1: Forsaken City A-Side),Strawberry
+strawberry,1,0,18,Strawberry 19 (Chapter 1: Forsaken City A-Side),Strawberry
+strawberry,1,0,19,Strawberry 20 (Chapter 1: Forsaken City A-Side),Strawberry
+strawberry,2,0,0,Strawberry 1 (Chapter 2: Old Site A-Side),Strawberry
+strawberry,2,0,1,Strawberry 2 (Chapter 2: Old Site A-Side),Strawberry
+strawberry,2,0,2,Strawberry 3 (Chapter 2: Old Site A-Side),Strawberry
+strawberry,2,0,3,Strawberry 4 (Chapter 2: Old Site A-Side),Strawberry
+strawberry,2,0,4,Strawberry 5 (Chapter 2: Old Site A-Side),Strawberry
+strawberry,2,0,5,Strawberry 6 (Chapter 2: Old Site A-Side),Strawberry
+strawberry,2,0,6,Strawberry 7 (Chapter 2: Old Site A-Side),Strawberry
+strawberry,2,0,7,Strawberry 8 (Chapter 2: Old Site A-Side),Strawberry
+strawberry,2,0,8,Strawberry 9 (Chapter 2: Old Site A-Side),Strawberry
+strawberry,2,0,9,Strawberry 10 (Chapter 2: Old Site A-Side),Strawberry
+strawberry,2,0,10,Strawberry 11 (Chapter 2: Old Site A-Side),Strawberry
+strawberry,2,0,11,Strawberry 12 (Chapter 2: Old Site A-Side),Strawberry
+strawberry,2,0,12,Strawberry 13 (Chapter 2: Old Site A-Side),Strawberry
+strawberry,2,0,13,Strawberry 14 (Chapter 2: Old Site A-Side),Strawberry
+strawberry,2,0,14,Strawberry 15 (Chapter 2: Old Site A-Side),Strawberry
+strawberry,2,0,15,Strawberry 16 (Chapter 2: Old Site A-Side),Strawberry
+strawberry,2,0,16,Strawberry 17 (Chapter 2: Old Site A-Side),Strawberry
+strawberry,2,0,17,Strawberry 18 (Chapter 2: Old Site A-Side),Strawberry
+strawberry,3,0,0,Strawberry 1 (Chapter 3: Celestial Resort A-Side),Strawberry
+strawberry,3,0,1,Strawberry 2 (Chapter 3: Celestial Resort A-Side),Strawberry
+strawberry,3,0,2,Strawberry 3 (Chapter 3: Celestial Resort A-Side),Strawberry
+strawberry,3,0,3,Strawberry 4 (Chapter 3: Celestial Resort A-Side),Strawberry
+strawberry,3,0,4,Strawberry 5 (Chapter 3: Celestial Resort A-Side),Strawberry
+strawberry,3,0,5,Strawberry 6 (Chapter 3: Celestial Resort A-Side),Strawberry
+strawberry,3,0,6,Strawberry 7 (Chapter 3: Celestial Resort A-Side),Strawberry
+strawberry,3,0,7,Strawberry 8 (Chapter 3: Celestial Resort A-Side),Strawberry
+strawberry,3,0,8,Strawberry 9 (Chapter 3: Celestial Resort A-Side),Strawberry
+strawberry,3,0,9,Strawberry 10 (Chapter 3: Celestial Resort A-Side),Strawberry
+strawberry,3,0,10,Strawberry 11 (Chapter 3: Celestial Resort A-Side),Strawberry
+strawberry,3,0,11,Strawberry 12 (Chapter 3: Celestial Resort A-Side),Strawberry
+strawberry,3,0,12,Strawberry 13 (Chapter 3: Celestial Resort A-Side),Strawberry
+strawberry,3,0,13,Strawberry 14 (Chapter 3: Celestial Resort A-Side),Strawberry
+strawberry,3,0,14,Strawberry 15 (Chapter 3: Celestial Resort A-Side),Strawberry
+strawberry,3,0,15,Strawberry 16 (Chapter 3: Celestial Resort A-Side),Strawberry
+strawberry,3,0,16,Strawberry 17 (Chapter 3: Celestial Resort A-Side),Strawberry
+strawberry,3,0,17,Strawberry 18 (Chapter 3: Celestial Resort A-Side),Strawberry
+strawberry,3,0,18,Strawberry 19 (Chapter 3: Celestial Resort A-Side),Strawberry
+strawberry,3,0,19,Strawberry 20 (Chapter 3: Celestial Resort A-Side),Strawberry
+strawberry,3,0,20,Strawberry 21 (Chapter 3: Celestial Resort A-Side),Strawberry
+strawberry,3,0,21,Strawberry 22 (Chapter 3: Celestial Resort A-Side),Strawberry
+strawberry,3,0,22,Strawberry 23 (Chapter 3: Celestial Resort A-Side),Strawberry
+strawberry,3,0,23,Strawberry 24 (Chapter 3: Celestial Resort A-Side),Strawberry
+strawberry,3,0,24,Strawberry 25 (Chapter 3: Celestial Resort A-Side),Strawberry
+strawberry,4,0,0,Strawberry 1 (Chapter 4: Golden Ridge A-Side),Strawberry
+strawberry,4,0,1,Strawberry 2 (Chapter 4: Golden Ridge A-Side),Strawberry
+strawberry,4,0,2,Strawberry 3 (Chapter 4: Golden Ridge A-Side),Strawberry
+strawberry,4,0,3,Strawberry 4 (Chapter 4: Golden Ridge A-Side),Strawberry
+strawberry,4,0,4,Strawberry 5 (Chapter 4: Golden Ridge A-Side),Strawberry
+strawberry,4,0,5,Strawberry 6 (Chapter 4: Golden Ridge A-Side),Strawberry
+strawberry,4,0,6,Strawberry 7 (Chapter 4: Golden Ridge A-Side),Strawberry
+strawberry,4,0,7,Strawberry 8 (Chapter 4: Golden Ridge A-Side),Strawberry
+strawberry,4,0,8,Strawberry 9 (Chapter 4: Golden Ridge A-Side),Strawberry
+strawberry,4,0,9,Strawberry 10 (Chapter 4: Golden Ridge A-Side),Strawberry
+strawberry,4,0,10,Strawberry 11 (Chapter 4: Golden Ridge A-Side),Strawberry
+strawberry,4,0,11,Strawberry 12 (Chapter 4: Golden Ridge A-Side),Strawberry
+strawberry,4,0,12,Strawberry 13 (Chapter 4: Golden Ridge A-Side),Strawberry
+strawberry,4,0,13,Strawberry 14 (Chapter 4: Golden Ridge A-Side),Strawberry
+strawberry,4,0,14,Strawberry 15 (Chapter 4: Golden Ridge A-Side),Strawberry
+strawberry,4,0,15,Strawberry 16 (Chapter 4: Golden Ridge A-Side),Strawberry
+strawberry,4,0,16,Strawberry 17 (Chapter 4: Golden Ridge A-Side),Strawberry
+strawberry,4,0,17,Strawberry 18 (Chapter 4: Golden Ridge A-Side),Strawberry
+strawberry,4,0,18,Strawberry 19 (Chapter 4: Golden Ridge A-Side),Strawberry
+strawberry,4,0,19,Strawberry 20 (Chapter 4: Golden Ridge A-Side),Strawberry
+strawberry,4,0,20,Strawberry 21 (Chapter 4: Golden Ridge A-Side),Strawberry
+strawberry,4,0,21,Strawberry 22 (Chapter 4: Golden Ridge A-Side),Strawberry
+strawberry,4,0,22,Strawberry 23 (Chapter 4: Golden Ridge A-Side),Strawberry
+strawberry,4,0,23,Strawberry 24 (Chapter 4: Golden Ridge A-Side),Strawberry
+strawberry,4,0,24,Strawberry 25 (Chapter 4: Golden Ridge A-Side),Strawberry
+strawberry,4,0,25,Strawberry 26 (Chapter 4: Golden Ridge A-Side),Strawberry
+strawberry,4,0,26,Strawberry 27 (Chapter 4: Golden Ridge A-Side),Strawberry
+strawberry,4,0,27,Strawberry 28 (Chapter 4: Golden Ridge A-Side),Strawberry
+strawberry,4,0,28,Strawberry 29 (Chapter 4: Golden Ridge A-Side),Strawberry
+strawberry,5,0,0,Strawberry 1 (Chapter 5: Mirror Temple A-Side),Strawberry
+strawberry,5,0,1,Strawberry 2 (Chapter 5: Mirror Temple A-Side),Strawberry
+strawberry,5,0,2,Strawberry 3 (Chapter 5: Mirror Temple A-Side),Strawberry
+strawberry,5,0,3,Strawberry 4 (Chapter 5: Mirror Temple A-Side),Strawberry
+strawberry,5,0,4,Strawberry 5 (Chapter 5: Mirror Temple A-Side),Strawberry
+strawberry,5,0,5,Strawberry 6 (Chapter 5: Mirror Temple A-Side),Strawberry
+strawberry,5,0,6,Strawberry 7 (Chapter 5: Mirror Temple A-Side),Strawberry
+strawberry,5,0,7,Strawberry 8 (Chapter 5: Mirror Temple A-Side),Strawberry
+strawberry,5,0,8,Strawberry 9 (Chapter 5: Mirror Temple A-Side),Strawberry
+strawberry,5,0,9,Strawberry 10 (Chapter 5: Mirror Temple A-Side),Strawberry
+strawberry,5,0,10,Strawberry 11 (Chapter 5: Mirror Temple A-Side),Strawberry
+strawberry,5,0,11,Strawberry 12 (Chapter 5: Mirror Temple A-Side),Strawberry
+strawberry,5,0,12,Strawberry 13 (Chapter 5: Mirror Temple A-Side),Strawberry
+strawberry,5,0,13,Strawberry 14 (Chapter 5: Mirror Temple A-Side),Strawberry
+strawberry,5,0,14,Strawberry 15 (Chapter 5: Mirror Temple A-Side),Strawberry
+strawberry,5,0,15,Strawberry 16 (Chapter 5: Mirror Temple A-Side),Strawberry
+strawberry,5,0,16,Strawberry 17 (Chapter 5: Mirror Temple A-Side),Strawberry
+strawberry,5,0,17,Strawberry 18 (Chapter 5: Mirror Temple A-Side),Strawberry
+strawberry,5,0,18,Strawberry 19 (Chapter 5: Mirror Temple A-Side),Strawberry
+strawberry,5,0,19,Strawberry 20 (Chapter 5: Mirror Temple A-Side),Strawberry
+strawberry,5,0,20,Strawberry 21 (Chapter 5: Mirror Temple A-Side),Strawberry
+strawberry,5,0,21,Strawberry 22 (Chapter 5: Mirror Temple A-Side),Strawberry
+strawberry,5,0,22,Strawberry 23 (Chapter 5: Mirror Temple A-Side),Strawberry
+strawberry,5,0,23,Strawberry 24 (Chapter 5: Mirror Temple A-Side),Strawberry
+strawberry,5,0,24,Strawberry 25 (Chapter 5: Mirror Temple A-Side),Strawberry
+strawberry,5,0,25,Strawberry 26 (Chapter 5: Mirror Temple A-Side),Strawberry
+strawberry,5,0,26,Strawberry 27 (Chapter 5: Mirror Temple A-Side),Strawberry
+strawberry,5,0,27,Strawberry 28 (Chapter 5: Mirror Temple A-Side),Strawberry
+strawberry,5,0,28,Strawberry 29 (Chapter 5: Mirror Temple A-Side),Strawberry
+strawberry,5,0,29,Strawberry 30 (Chapter 5: Mirror Temple A-Side),Strawberry
+strawberry,5,0,30,Strawberry 31 (Chapter 5: Mirror Temple A-Side),Strawberry
+strawberry,7,0,0,Strawberry 1 (Chapter 7: The Summit A-Side),Strawberry
+strawberry,7,0,1,Strawberry 2 (Chapter 7: The Summit A-Side),Strawberry
+strawberry,7,0,2,Strawberry 3 (Chapter 7: The Summit A-Side),Strawberry
+strawberry,7,0,3,Strawberry 4 (Chapter 7: The Summit A-Side),Strawberry
+strawberry,7,0,4,Strawberry 5 (Chapter 7: The Summit A-Side),Strawberry
+strawberry,7,0,5,Strawberry 6 (Chapter 7: The Summit A-Side),Strawberry
+strawberry,7,0,6,Strawberry 7 (Chapter 7: The Summit A-Side),Strawberry
+strawberry,7,0,7,Strawberry 8 (Chapter 7: The Summit A-Side),Strawberry
+strawberry,7,0,8,Strawberry 9 (Chapter 7: The Summit A-Side),Strawberry
+strawberry,7,0,9,Strawberry 10 (Chapter 7: The Summit A-Side),Strawberry
+strawberry,7,0,10,Strawberry 11 (Chapter 7: The Summit A-Side),Strawberry
+strawberry,7,0,11,Strawberry 12 (Chapter 7: The Summit A-Side),Strawberry
+strawberry,7,0,12,Strawberry 13 (Chapter 7: The Summit A-Side),Strawberry
+strawberry,7,0,13,Strawberry 14 (Chapter 7: The Summit A-Side),Strawberry
+strawberry,7,0,14,Strawberry 15 (Chapter 7: The Summit A-Side),Strawberry
+strawberry,7,0,15,Strawberry 16 (Chapter 7: The Summit A-Side),Strawberry
+strawberry,7,0,16,Strawberry 17 (Chapter 7: The Summit A-Side),Strawberry
+strawberry,7,0,17,Strawberry 18 (Chapter 7: The Summit A-Side),Strawberry
+strawberry,7,0,18,Strawberry 19 (Chapter 7: The Summit A-Side),Strawberry
+strawberry,7,0,19,Strawberry 20 (Chapter 7: The Summit A-Side),Strawberry
+strawberry,7,0,20,Strawberry 21 (Chapter 7: The Summit A-Side),Strawberry
+strawberry,7,0,21,Strawberry 22 (Chapter 7: The Summit A-Side),Strawberry
+strawberry,7,0,22,Strawberry 23 (Chapter 7: The Summit A-Side),Strawberry
+strawberry,7,0,23,Strawberry 24 (Chapter 7: The Summit A-Side),Strawberry
+strawberry,7,0,24,Strawberry 25 (Chapter 7: The Summit A-Side),Strawberry
+strawberry,7,0,25,Strawberry 26 (Chapter 7: The Summit A-Side),Strawberry
+strawberry,7,0,26,Strawberry 27 (Chapter 7: The Summit A-Side),Strawberry
+strawberry,7,0,27,Strawberry 28 (Chapter 7: The Summit A-Side),Strawberry
+strawberry,7,0,28,Strawberry 29 (Chapter 7: The Summit A-Side),Strawberry
+strawberry,7,0,29,Strawberry 30 (Chapter 7: The Summit A-Side),Strawberry
+strawberry,7,0,30,Strawberry 31 (Chapter 7: The Summit A-Side),Strawberry
+strawberry,7,0,31,Strawberry 32 (Chapter 7: The Summit A-Side),Strawberry
+strawberry,7,0,32,Strawberry 33 (Chapter 7: The Summit A-Side),Strawberry
+strawberry,7,0,33,Strawberry 34 (Chapter 7: The Summit A-Side),Strawberry
+strawberry,7,0,34,Strawberry 35 (Chapter 7: The Summit A-Side),Strawberry
+strawberry,7,0,35,Strawberry 36 (Chapter 7: The Summit A-Side),Strawberry
+strawberry,7,0,36,Strawberry 37 (Chapter 7: The Summit A-Side),Strawberry
+strawberry,7,0,37,Strawberry 38 (Chapter 7: The Summit A-Side),Strawberry
+strawberry,7,0,38,Strawberry 39 (Chapter 7: The Summit A-Side),Strawberry
+strawberry,7,0,39,Strawberry 40 (Chapter 7: The Summit A-Side),Strawberry
+strawberry,7,0,40,Strawberry 41 (Chapter 7: The Summit A-Side),Strawberry
+strawberry,7,0,41,Strawberry 42 (Chapter 7: The Summit A-Side),Strawberry
+strawberry,7,0,42,Strawberry 43 (Chapter 7: The Summit A-Side),Strawberry
+strawberry,7,0,43,Strawberry 44 (Chapter 7: The Summit A-Side),Strawberry
+strawberry,7,0,44,Strawberry 45 (Chapter 7: The Summit A-Side),Strawberry
+strawberry,7,0,45,Strawberry 46 (Chapter 7: The Summit A-Side),Strawberry
+strawberry,7,0,46,Strawberry 47 (Chapter 7: The Summit A-Side),Strawberry
+strawberry,9,0,0,Strawberry 1 (Chapter 8: Core A-Side),Strawberry
+strawberry,9,0,1,Strawberry 2 (Chapter 8: Core A-Side),Strawberry
+strawberry,9,0,2,Strawberry 3 (Chapter 8: Core A-Side),Strawberry
+strawberry,9,0,3,Strawberry 4 (Chapter 8: Core A-Side),Strawberry
+strawberry,9,0,4,Strawberry 5 (Chapter 8: Core A-Side),Strawberry
+strawberry,10,0,0,Moon Berry,Strawberry
+golden,1,0,0,Golden Strawberry (Chapter 1: Forsaken City A-Side),Strawberry
+golden,1,0,1,Winged Golden Strawberry,Strawberry
+golden,2,0,0,Golden Strawberry (Chapter 2: Old Site A-Side),Strawberry
+golden,3,0,0,Golden Strawberry (Chapter 3: Celestial Resort A-Side),Strawberry
+golden,4,0,0,Golden Strawberry (Chapter 4: Golden Ridge A-Side),Strawberry
+golden,5,0,0,Golden Strawberry (Chapter 5: Mirror Temple A-Side),Strawberry
+golden,6,0,0,Golden Strawberry (Chapter 6: Reflection A-Side),Strawberry
+golden,7,0,0,Golden Strawberry (Chapter 7: The Summit A-Side),Strawberry
+golden,9,0,0,Golden Strawberry (Chapter 8: Core A-Side),Strawberry
+golden,10,0,0,Golden Strawberry (Chapter 9: Farewell A-Side),Strawberry
+golden,1,1,0,Golden Strawberry (Chapter 1: Forsaken City B-Side),Strawberry
+golden,2,1,0,Golden Strawberry (Chapter 2: Old Site B-Side),Strawberry
+golden,3,1,0,Golden Strawberry (Chapter 3: Celestial Resort B-Side),Strawberry
+golden,4,1,0,Golden Strawberry (Chapter 4: Golden Ridge B-Side),Strawberry
+golden,5,1,0,Golden Strawberry (Chapter 5: Mirror Temple B-Side),Strawberry
+golden,6,1,0,Golden Strawberry (Chapter 6: Reflection B-Side),Strawberry
+golden,7,1,0,Golden Strawberry (Chapter 7: The Summit B-Side),Strawberry
+golden,9,1,0,Golden Strawberry (Chapter 8: Core B-Side),Strawberry
+golden,1,2,0,Golden Strawberry (Chapter 1: Forsaken City C-Side),Strawberry
+golden,2,2,0,Golden Strawberry (Chapter 2: Old Site C-Side),Strawberry
+golden,3,2,0,Golden Strawberry (Chapter 3: Celestial Resort C-Side),Strawberry
+golden,4,2,0,Golden Strawberry (Chapter 4: Golden Ridge C-Side),Strawberry
+golden,5,2,0,Golden Strawberry (Chapter 5: Mirror Temple C-Side),Strawberry
+golden,6,2,0,Golden Strawberry (Chapter 6: Reflection C-Side),Strawberry
+golden,7,2,0,Golden Strawberry (Chapter 7: The Summit C-Side),Strawberry
+golden,9,2,0,Golden Strawberry (Chapter 8: Core C-Side),Strawberry
