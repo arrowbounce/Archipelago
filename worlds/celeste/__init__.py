@@ -5,7 +5,7 @@ from typing import List
 
 from BaseClasses import Item, ItemClassification, MultiWorld, Tutorial
 from worlds.AutoWorld import WebWorld, World
-from .options import CelesteGameOptions, celeste_option_groups
+from .options import CelesteGameOptions, celeste_option_groups, GoalLevel
 
 from .data import (
     BaseData,
@@ -112,12 +112,18 @@ class CelesteWorld(World):
         }
 
     def generate_basic(self) -> None:
-        self.multiworld.get_location(self.game_logic.get_victory_location().name, self.player).place_locked_item(
-            self.create_item("Victory (Celeste)")
-        )
-        self.multiworld.completion_condition[self.player] = partial(
-            lambda player, state: state.has("Victory (Celeste)", player), self.player
-        )
+        if self.options.goal_level.value == GoalLevel.option_all_berries:
+            self.multiworld.completion_condition[self.player] = partial(
+                lambda player, state: state.has("Strawberry", player, count=202), self.player
+            )
+
+        else: 
+            self.multiworld.get_location(self.game_logic.get_victory_location().name, self.player).place_locked_item(
+                self.create_item("Victory (Celeste)")
+            )
+            self.multiworld.completion_condition[self.player] = partial(
+                lambda player, state: state.has("Victory (Celeste)", player), self.player
+            )
 
     def fill_slot_data(self):
         return self.options.as_dict(

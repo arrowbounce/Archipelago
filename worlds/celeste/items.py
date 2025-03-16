@@ -4,7 +4,7 @@ from typing import Dict, List
 from BaseClasses import ItemClassification
 
 from .data import VICTORY_UUID, BaseData, CelesteItem, CelesteItemType, CelesteLevel
-from .options import CelesteGameOptions, ProgressionSystem
+from .options import CelesteGameOptions, ProgressionSystem, GoalLevel
 
 ITEM_GROUPS = {
     "Heart": {
@@ -198,6 +198,7 @@ class OriginalItemGenerator(ItemGenerator):
 
         strawberry_count = 0
         goal_level = self._options.get_goal_level()
+        is_202 = self._options.goal_level.value == GoalLevel.option_all_berries
         for item_type, level, name, location_name, uuid in BaseData.items():
             # Skip all items that would ordinarily come after the goal level
             if level > goal_level:
@@ -208,7 +209,7 @@ class OriginalItemGenerator(ItemGenerator):
 
             # All strawberries above the required number are filler, rather than progression.
             if item_type == CelesteItemType.STRAWBERRY or item_type == CelesteItemType.GOLDEN:
-                if strawberry_count >= self._options.berries_required.value:
+                if strawberry_count >= self._options.berries_required.value and not is_202:
                     classification = ItemClassification.filler
                 strawberry_count += 1
 
@@ -217,7 +218,7 @@ class OriginalItemGenerator(ItemGenerator):
                 classification = ItemClassification.filler
 
             # Adjust name for victory condition
-            if level == goal_level and item_type == CelesteItemType.COMPLETION:
+            if level == goal_level and item_type == CelesteItemType.COMPLETION and not is_202:
                 name = "Victory (Celeste)"
                 uuid = VICTORY_UUID
 

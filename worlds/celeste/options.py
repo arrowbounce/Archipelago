@@ -55,6 +55,7 @@ class GoalLevel(Choice):
     option_chapter_8_core_b = 4
     option_chapter_7_summit_c = 5
     option_chapter_8_core_c = 6
+    option_all_berries = 99
     default = 0
 
 
@@ -124,6 +125,7 @@ class CelesteGameOptions(PerGameCommonOptions):
         GoalLevel.option_chapter_8_core_b: CelesteLevel(CelesteChapter.CORE, CelesteSide.B_SIDE),
         GoalLevel.option_chapter_8_core_c: CelesteLevel(CelesteChapter.CORE, CelesteSide.C_SIDE),
         GoalLevel.option_chapter_9_farewell_a: CelesteLevel(CelesteChapter.FAREWELL, CelesteSide.A_SIDE),
+        GoalLevel.option_all_berries: CelesteLevel(CelesteChapter.FAREWELL, CelesteSide.A_SIDE),
     }
 
     def get_goal_level(self) -> CelesteLevel:
